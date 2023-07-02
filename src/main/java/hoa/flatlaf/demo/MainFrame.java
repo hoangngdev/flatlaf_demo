@@ -118,7 +118,7 @@ class MainFrame	extends JFrame {
 		//TabsPanel tabsPanel = new TabsPanel();
 		//OptionPanePanel optionPanePanel = new OptionPanePanel();
 		//ExtrasPanel extrasPanel1 = new ExtrasPanel();
-		//controlBar = new ControlBar();
+		FooterBar controlBar = new FooterBar(this);
 		//themesPanel = new IJThemesPanel();
 
 		//======== this ========
@@ -154,7 +154,7 @@ class MainFrame	extends JFrame {
 			contentPanel.add(tabbedPane, "cell 0 0");
 		}
 		contentPane.add(contentPanel, BorderLayout.CENTER);
-		//contentPane.add(controlBar, BorderLayout.SOUTH);
+		contentPane.add(controlBar, BorderLayout.SOUTH);
 		//contentPane.add(themesPanel, BorderLayout.EAST);
 		
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
