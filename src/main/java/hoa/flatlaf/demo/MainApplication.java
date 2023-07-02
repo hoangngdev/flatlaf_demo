@@ -2,6 +2,7 @@ package hoa.flatlaf.demo;
 
 import javax.swing.SwingUtilities;
 
+import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatInspector;
 import com.formdev.flatlaf.extras.FlatUIDefaultsInspector;
@@ -14,9 +15,7 @@ public class MainApplication {
 	public static void main( String[] args ) {
 		
 
-		SwingUtilities.invokeLater( () -> {
-			
-			FlatLightLaf.setup();
+		//SwingUtilities.invokeLater( () -> {
 			
 			DemoPrefs.init( PREFS_ROOT_PATH );
 
@@ -27,10 +26,10 @@ public class MainApplication {
 			//FlatRobotoMonoFont.installLazy();
 
 			// application specific UI defaults
-			//FlatLaf.registerCustomDefaultsSource( "com.formdev.flatlaf.demo" );
+			FlatLaf.registerCustomDefaultsSource( "com.formdev.flatlaf.demo" );
 
 			// set look and feel
-			//DemoPrefs.setupLaf( args );
+			DemoPrefs.setupLaf( args );
 
 			// install inspectors
 			FlatInspector.install( "ctrl shift alt X" );
@@ -43,7 +42,7 @@ public class MainApplication {
 			frame.pack();
 			frame.setLocationRelativeTo( null );
 			frame.setVisible( true );
-		} );
+		//} );
 	}
 	
 }
