@@ -1,18 +1,10 @@
 package hoa.flatlaf.demo;
 
-import java.awt.Dimension;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import com.formdev.flatlaf.FlatLaf;
+
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatInspector;
 import com.formdev.flatlaf.extras.FlatUIDefaultsInspector;
-import com.formdev.flatlaf.fonts.inter.FlatInterFont;
-import com.formdev.flatlaf.fonts.jetbrains_mono.FlatJetBrainsMonoFont;
-import com.formdev.flatlaf.fonts.roboto.FlatRobotoFont;
-import com.formdev.flatlaf.fonts.roboto_mono.FlatRobotoMonoFont;
-import com.formdev.flatlaf.util.SystemInfo;
 
 public class MainApplication {
 
@@ -45,7 +37,7 @@ public class MainApplication {
 			FlatUIDefaultsInspector.install( "ctrl shift alt Y" );
 
 			// create frame
-			DemoFrame frame = new DemoFrame();
+			MainFrame frame = new MainFrame();
 
 			// show frame
 			frame.pack();
