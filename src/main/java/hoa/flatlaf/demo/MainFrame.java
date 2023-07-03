@@ -29,6 +29,7 @@ import com.formdev.flatlaf.extras.FlatUIDefaultsInspector;
 import com.formdev.flatlaf.ui.JBRCustomDecorations;
 import com.formdev.flatlaf.util.SystemInfo;
 
+import hoa.flatlaf.demo.panel.BasicComponentsPanel;
 import net.miginfocom.layout.ConstraintParser;
 import net.miginfocom.layout.LC;
 import net.miginfocom.layout.UnitValue;
@@ -113,7 +114,7 @@ class MainFrame extends JFrame {
 
 		JPanel contentPanel = new JPanel();
 		tabbedPane = new JTabbedPane();
-		// BasicComponentsPanel basicComponentsPanel = new BasicComponentsPanel();
+		BasicComponentsPanel basicComponentsPanel = new BasicComponentsPanel();
 		// MoreComponentsPanel moreComponentsPanel = new MoreComponentsPanel();
 		// DataComponentsPanel dataComponentsPanel = new DataComponentsPanel();
 		// TabsPanel tabsPanel = new TabsPanel();
@@ -144,7 +145,7 @@ class MainFrame extends JFrame {
 			{
 				tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 				tabbedPane.addChangeListener(e -> selectedTabChanged());
-				// tabbedPane.addTab("Basic Components", basicComponentsPanel);
+				tabbedPane.addTab("Basic Components", basicComponentsPanel);
 				// tabbedPane.addTab("More Components", moreComponentsPanel);
 				// tabbedPane.addTab("Data Components", dataComponentsPanel);
 				// tabbedPane.addTab("Tabs", tabsPanel);
