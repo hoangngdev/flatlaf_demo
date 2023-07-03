@@ -1,10 +1,12 @@
 package hoa.flatlaf.demo;
 
 import java.awt.Font;
+import java.util.Locale;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -30,6 +32,7 @@ class FooterBar extends JPanel {
 	private MainFrame mainFrameOwner;
 
 	private JSeparator separator1;
+	private JComboBox<Locale> languageComboBox;
 	private LookAndFeelsComboBox lookAndFeelComboBox;
 	private JCheckBox rightToLeftCheckBox;
 	private JCheckBox enabledCheckBox;
@@ -83,6 +86,7 @@ class FooterBar extends JPanel {
 		// JFormDesigner - Component initialization - DO NOT MODIFY
 		// //GEN-BEGIN:initComponents
 		separator1 = new JSeparator();
+		createLanguageComboBox();
 		lookAndFeelComboBox = new LookAndFeelsComboBox();
 		rightToLeftCheckBox = new JCheckBox();
 		enabledCheckBox = new JCheckBox();
@@ -92,39 +96,51 @@ class FooterBar extends JPanel {
 		// ======== this ========
 		setLayout(new MigLayout("insets dialog",
 				// columns
-				"[fill]" + "[fill]" + "[fill]" + "[grow,fill]" + "[button,fill]",
+				"[fill]" + "[fill]" + "[fill]" + "[fill]" + "[grow,fill]" + "[button,fill]",
 				// rows
 				"[bottom]" + "[]"));
 		add(separator1, "cell 0 0 5 1");
 
+		// ---- language ComboBox ----
+		add(languageComboBox, "cell 0 1");
+				
 		// ---- lookAndFeelComboBox ----
-		add(lookAndFeelComboBox, "cell 0 1");
+		add(lookAndFeelComboBox, "cell 1 1");
 
 		// ---- rightToLeftCheckBox ----
 		rightToLeftCheckBox.setText("right-to-left");
 		rightToLeftCheckBox.setMnemonic('R');
 		
-		add(rightToLeftCheckBox, "cell 1 1");
+		add(rightToLeftCheckBox, "cell 2 1");
 
 		// ---- enabledCheckBox ----
 		enabledCheckBox.setText("enabled");
 		enabledCheckBox.setMnemonic('E');
 		enabledCheckBox.setSelected(true);
 		
-		add(enabledCheckBox, "cell 2 1");
+		add(enabledCheckBox, "cell 3 1");
 
 		// ---- infoLabel ----
 		infoLabel.setText("text");
-		add(infoLabel, "cell 3 1,alignx center,growx 0");
+		add(infoLabel, "cell 4 1,alignx center,growx 0");
 
 		// ---- closeButton ----
 		closeButton.setText("Close");
 		closeButton.addActionListener(e -> closePerformed());
-		add(closeButton, "cell 4 1");
+		add(closeButton, "cell 5 1");
 		// JFormDesigner - End of component initialization //GEN-END:initComponents
 	}
 
 
+	private void createLanguageComboBox() {
+		Locale[] items = { Locale.GERMAN, Locale.ENGLISH };
+		languageComboBox = new JComboBox<Locale>(items);
+		languageComboBox.addActionListener(actionEvent -> {
+			Locale newValue = (Locale) languageComboBox.getSelectedItem();
+			this.mainFrameOwner.changeApplicationLanguage(newValue);
+		});
+	}
+	
 	private void updateInfoLabel() {
 		String javaVendor = System.getProperty("java.vendor");
 		if ("Oracle Corporation".equals(javaVendor))

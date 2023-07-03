@@ -31,14 +31,18 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.extras.components.FlatButton;
 import com.formdev.flatlaf.extras.components.FlatButton.ButtonType;
 
+import hoa.flatlaf.demo.util.ResourceBundleUtil;
+
 public class MenuBarComponent {
 
 	private MainFrame mainFrameOwner;
 	private JMenuBar menuBar1;
-
+	private JMenu fileMenu, editMenu;
+	
 	public MenuBarComponent(MainFrame mainFrameOwner) {
 		this.mainFrameOwner = mainFrameOwner;
 		initComponents();
+		setOrUpdateLabelForCurrentLangue();
 	}
 
 	public JMenuBar getMenuBar() {
@@ -47,13 +51,13 @@ public class MenuBarComponent {
 
 	private void initComponents() {
 		menuBar1 = new JMenuBar();
-		JMenu fileMenu = new JMenu();
+		fileMenu = new JMenu();
 		JMenuItem newMenuItem = new JMenuItem();
 		JMenuItem openMenuItem = new JMenuItem();
 		JMenuItem saveAsMenuItem = new JMenuItem();
 		JMenuItem closeMenuItem = new JMenuItem();
 		JMenuItem exitMenuItem = new JMenuItem();
-		JMenu editMenu = new JMenu();
+		editMenu = new JMenu();
 		JMenuItem undoMenuItem = new JMenuItem();
 		JMenuItem redoMenuItem = new JMenuItem();
 		JMenuItem cutMenuItem = new JMenuItem();
@@ -75,7 +79,6 @@ public class MenuBarComponent {
 
 			// ======== fileMenu ========
 			{
-				fileMenu.setText("File");
 				fileMenu.setMnemonic('F');
 
 				// ---- newMenuItem ----
@@ -124,7 +127,6 @@ public class MenuBarComponent {
 
 			// ======== editMenu ========
 			{
-				editMenu.setText("Edit");
 				editMenu.setMnemonic('E');
 
 				// ---- undoMenuItem ----
@@ -349,6 +351,11 @@ public class MenuBarComponent {
 
 	}
 
+	public void setOrUpdateLabelForCurrentLangue() {
+		fileMenu.setText(ResourceBundleUtil.getDisplayKey("File"));
+		editMenu.setText(ResourceBundleUtil.getDisplayKey("Edit"));
+	}
+	
 	private void newActionPerformed() {
 		// NewDialog newDialog = new NewDialog( this );
 		// newDialog.setVisible( true );
